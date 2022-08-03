@@ -34,21 +34,26 @@ void fundamentals(void) {
     // Start a DO-WHILE loop
     do {
         printf("Type not empty string (q - to quit):\n"); // Ask the user to input a string or input 'q' to go back to main menu
-        fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
-        buffer1[strlen(buffer1) - 1] = '\0'; // 
+        fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in string variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
+        buffer1[strlen(buffer1) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
         if (strcmp(buffer1, "q") != 0) {
-            printf("Type the character position within the string:\n");
-            fgets(numInput, NUM_INPUT_SIZE, stdin);
-            numInput[strlen(numInput) - 1] = '\0';
-            position = atoi(numInput);
+            // Start of Code Block 1: Execute if the input string is not character 'q'
+            printf("Type the character position within the string:\n"); // Ask the user to input an integer that will be the basis of the character output
+            fgets(numInput, NUM_INPUT_SIZE, stdin); // Store the input integer in string variable numInput from the standard input. Read maximum characters equal to NUM_INPUT_SIZE.
+            numInput[strlen(numInput) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
+            position = atoi(numInput); // Convert the input integer in String format into Integer format and store in variable position
             if (position >= strlen(buffer1)) {
-                position = strlen(buffer1) - 1;
-                printf("Too big... Position reduced to max. available\n");
+                // Start of Code Block 1.1: Execute if the input integer is greater than or equal to the length of input string
+                position = strlen(buffer1) - 1; // Replace the value in variable position by the position of the last character in the input string
+                printf("Too big... Position reduced to max. available\n"); // Notify the user that the input integer is exceeding the length of the input string
+                // End of Code Block 1.1
             }
-            printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]);
+            printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]); // Output the character positioned at the value inside variable position
+            // End of Code Block 1
         }
-    } while (strcmp(buffer1, "q") != 0);
+    } while (strcmp(buffer1, "q") != 0); // Repeat the DO-WHILE loop until the user enters the character 'q'
     // End a DO-WHILE loop
 
     printf("*** End of Converting Strings to int Demo ***\n\n"); // Output an ending statement to mark end of the module
 }
+// End the fundamentals function and return the control to caller (main function)
