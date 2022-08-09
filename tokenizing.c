@@ -16,7 +16,7 @@ Purpose:        This module is to tokenize a string by using strtok() and split 
 //Function starts here. No argument passed and return null
 void tokenizing(void) {
 
-/*Version 1
+//Version 1
     printf("*** Start of Tokenizing Strings Demo ***\n");
     char    words[BUFFER_SIZE]; //this variable is to store the input string from user
     char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
@@ -37,8 +37,8 @@ void tokenizing(void) {
         }       //end of if
     } while (strcmp(words, "q") != 0);      //end of loop
     printf("*** End of Tokenizing Words Demo ***\n\n");
-*/
-//Version 2
+
+/*Version 2
     printf("*** Start of Tokenizing Phrases Demo ***\n");
     char phrases[BUFFER_SIZE];
     char* nextPhrase = NULL;
@@ -57,6 +57,7 @@ void tokenizing(void) {
         }
     } while (strcmp(phrases, "q") != 0);
     printf("*** End of Tokenizing Phrases Demo ***\n\n");
+*/
 
 
 }
