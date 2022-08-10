@@ -2,12 +2,17 @@
 Author:       Dan Zhang
 Email:        dzhang101@myseneca.ca
 ID:           182201210
-Date written: 2022-08-03
+Date written: 2022-08-09
 Course:       CPR 101 NHH
 Project:      Final Project
-Purpose:      This Manipulations module receives two strings from user input, by
-calling strcat() function from C string library, the program concatenate these
-two strings
+Purpose:      This Manipulations module V1 receives two strings from user input,
+by calling strcat() function from C string library, the program concatenate
+these two strings. This Manipulations module V2 receives two strings from user
+input, and by calling strcmp() function from C string library, the program will
+determine if these two strings are equal: if the strings are equal, the function
+returns 0. If the first non-matching character in compare1 is greater (in ASCII)
+than that of compare2, return > 0. If the first non-matching character in
+compare1 is lower (in ASCII) than that of compare2 return < 0.
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -28,8 +33,8 @@ void manipulating(void) {
           stdin);  // receive the whole line input for string1
     string1[strlen(string1) - 1] =
         '\0';  // add null terminator symbol to the last index of string1
-    if (strcmp(string1, "q") !=
-        0) {  // check if user does not input "q" to quit
+    if (strcmp(string1, "q") != 0) {  // check if user does not input "q", if
+                                      // user enters "q", exit the while loop
       printf("Type the 2nd string:\n");
       fgets(string2, BUFFER_SIZE,
             stdin);  // receive the whole line input for string2
@@ -43,4 +48,42 @@ void manipulating(void) {
   } while (strcmp(string1, "q") !=
            0);  // infinite loop end when character 'q' is input by user
   printf("*** End of Concatenating Demo ***\n\n");
+
+  // V2
+  printf("*** Start of Comparing Strings Demo ***\n");
+  char compare1[BUFFER_SIZE];  // initialize compare1 to store first user input
+                               // string
+  char compare2[BUFFER_SIZE];  // initialize compare1 to store second user input
+                               // string
+  int result;  // initialize an integer to receive the result of compare two
+               // strings: compare1 and compare2
+  do {         // infinite loop start
+    printf("Type the 1st string to compare (q - to quit):\n");
+    fgets(compare1, BUFFER_SIZE,
+          stdin);  // receive the whole line input for compare1
+    compare1[strlen(compare1) - 1] =
+        '\0';  // add null terminator symbol to the last index of compare1
+    if (strcmp(compare1, "q") != 0) {  // check if user does not input "q", if
+                                       // user enter "q", exit the while loop
+      printf("Type the 2nd string to compare:\n");
+      fgets(compare2, BUFFER_SIZE,
+            stdin);  // receive the whole line input for compare2
+      compare2[strlen(compare2) - 1] = '\0';  // add null terminator symbol to
+                                              // the last index of compare2
+      result = strcmp(compare1,
+                      compare2);  // compare two strings use strcmp() function
+                                  // from string library
+      if (result < 0)  // check if result is less than zero, if result is less
+                       // than zero, print the next line
+        printf("\'%s\' string is less than \'%s\'\n", compare1, compare2);
+      else if (result == 0)  // check if result if equal to zero, if result is
+                             // equal to zero, print the next line
+        printf("\'%s\' string is equal to \'%s\'\n", compare1, compare2);
+      else  // if result is not less or equal to zero, which is greater than
+            // zero, print next line
+        printf("\'%s\' string is greater than \'%s\'\n", compare1, compare2);
+    }
+  } while (strcmp(compare1, "q") !=
+           0);  // infinite loop end when character 'q' is input by user
+  printf("*** End of Comparing Strings Demo ***\n\n");
 }
