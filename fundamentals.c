@@ -1,17 +1,18 @@
 /*
-Author: Kenneth Reforma
-Email: kreforma@myseneca.ca
-ID: 144680212
-Date written: 2022-08-03
-Course: CPR 101 NHH
-Project: Final Project
-Purpose: The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0. 
+Author:         Kenneth Reforma
+Email:          kreforma@myseneca.ca
+ID:             144680212
+Date written:   2022-08-09
+Course:         CPR 101 NHH
+Project:        Final Project
+Purpose:        The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0. 
   Consider the following example:
     Input String: Kenneth Reforma
     Input Integer: 10
     OUTPUT: 'f'
+The second upgrade of this module is to get a string from the user and the code will calculate the length of the entered string using the string library.
 
-If a 'q' input was entered by the user, the module will end and go back to the main menu.
+For both parts: If a 'q' input was entered by the user, the module will end and go back to the main menu.
 */
 
 // Start macros and headers here
@@ -61,20 +62,22 @@ void fundamentals(void) {
 
     printf("*** End of Converting Strings to int Demo ***\n\n"); // Output an ending statement to mark end of the module
 
-// V2
-    printf("*** Start of Measuring Strings Demo ***\n");
-    char buffer2[BUFFER_SIZE];
+    // V2
+    printf("*** Start of Measuring Strings Demo ***\n"); // Display start of V2
+    char buffer2[BUFFER_SIZE]; // String named "buffer2" with size equal to BUFFER_SIZE macro
 
+    // Start DO-WHILE loop
     do
     {
-        printf("Type a string (q - to quit):\n");
-        fgets(buffer2, BUFFER_SIZE, stdin);
-        buffer2[strlen(buffer2) - 1] = '\0';
+        printf("Type a string (q - to quit):\n"); // Display prompt for an input string, user can quit the module by entering 'q'
+        fgets(buffer2, BUFFER_SIZE, stdin); // Store the input string in string variable buffer2 from the standard input. Read maximum characters equal to BUFFER_SIZE.
+        buffer2[strlen(buffer2) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
 
-        if (strcmp(buffer2, "q") != 0)
-            printf("The length of \'%s\' is %d characters\n",
-                buffer2, (int)strlen(buffer2));
-    } while (strcmp(buffer2, "q") != 0);
-    printf("*** End of Measuring Strings Demo ***\n\n");
+        if (strcmp(buffer2, "q") != 0) // Did the user input 'q'? If NO, use Code Block 2
+            printf("The length of \'%s\' is %d characters\n", buffer2, (int)strlen(buffer2)); // Code Block 2: Output the length of the inputted string
+    } while (strcmp(buffer2, "q") != 0); // Did the user input 'q'? If NO, loop again
+    // End DO-WHILE loop
+
+    printf("*** End of Measuring Strings Demo ***\n\n"); // Display end of V2
 }
 // End the fundamentals function and return the control to caller (main function)
