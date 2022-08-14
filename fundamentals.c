@@ -79,5 +79,28 @@ void fundamentals(void) {
     // End DO-WHILE loop
 
     printf("*** End of Measuring Strings Demo ***\n\n"); // Display end of V2
+
+    // V3
+    printf("*** Start of Copying Strings Demo ***\n"); // Display start of V3
+    char destination[BUFFER_SIZE]; // String named "destination" with size equal to BUFFER_SIZE macro
+    char source[BUFFER_SIZE]; // String named "source" with size equal to BUFFER_SIZE macro
+
+    // Start DO-WHILE loop
+    do
+    {
+        destination[0] = '\0'; // Safely initialize destination string
+
+        printf("Destination string is reset to empty\n"); // Display confirmation that destionation string is empty
+        printf("Type the source string (q - to quit):\n"); // Display prompt for an input string as the source string from user, user can quit the module by entering 'q'
+        fgets(source, BUFFER_SIZE, stdin); // Store the input string in string variable source from the standard input. Read maximum characters equal to BUFFER_SIZE.
+        source[strlen(source) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
+
+        if (strcmp(source, "q") != 0) // Did the user input 'q'? If NO, use Code Block 3
+        { // Code Block 3
+            strcpy(destination, source); // Copy string from source to destination
+            printf("New destination string is \'%s\'\n", destination); // Display confirmation that the destination is changed into the string originally in source.
+        }
+    } while (strcmp(source, "q") != 0); // Did the user input 'q'? If NO, loop again
+    printf("*** End of Copying Strings Demo ***\n"); // Display end of V3
 }
 // End the fundamentals function and return the control to caller (main function)
