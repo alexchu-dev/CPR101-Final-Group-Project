@@ -57,25 +57,25 @@ void tokenizing(void) {
     } while (strcmp(phrases, "q") != 0);    //end of loop
     printf("*** End of Tokenizing Phrases Demo ***\n\n");
 
-    /*Version 3
-        printf("*** Start of Tokenizing Phrases Demo ***\n");
-        char phrases[BUFFER_SIZE];  //this variable is to store the input string from user
-        char* nextPhrase = NULL;    //this is where the token takes place, string is modified and broken into tokens
-        int phrasesCounter;         //this variable stores the numbers of tokens
-        do {
-            printf("Type a few phrases seperated by comma (q - to quit):\n");
-            fgets(phrases, BUFFER_SIZE, stdin);
-            phrases[strlen(phrases) - 1] = '\0';    //define the null terminator at the end of the string
-            if (strcmp(phrases, "q") != 0) {        //compare the input with the exiting string "q"
-                nextPhrase = strtok(phrases, ",");  //string lib function split string by delimiters, returns a pointer to the first token in word
-                phrasesCounter = 1;                 //initialise the wordsCounter so that it starts with 1 in the display
-                while (nextPhrase) {                //loop continues until there null terminator found, hence it keeps spliting the string
-                    printf("Phrase #%d is \'%s'\n", phrasesCounter++, nextPhrase);
-                    nextPhrase = strtok(NULL, ","); // returns a pointer to the next token in the string
-                }
+    //Version 3
+    printf("*** Start of Tokenizing Sentences Demo ***\n");
+    char sentences[BUFFER_SIZE];  //this variable is to store the input string from user
+    char* nextSentence = NULL;    //this is where the token takes place, string is modified and broken into tokens
+    int sentencesCounter;         //this variable stores the numbers of tokens
+    do {
+        printf("Type a few sentences seperated by dot(q - to quit):\n");
+        fgets(sentences, BUFFER_SIZE, stdin);
+        sentences[strlen(sentences) - 1] = '\0';    //define the null terminator at the end of the string
+        if (strcmp(sentences, "q") != 0) {        //compare the input with the exiting string "q"
+            nextSentence = strtok(sentences, ".");  //string lib function split string by delimiters, returns a pointer to the first token in word
+            sentencesCounter = 1;                 //initialise the wordsCounter so that it starts with 1 in the display
+            while (nextSentence) {                //loop continues until there null terminator found, hence it keeps spliting the string
+                printf("Sentences #%d is \'%s'\n", sentencesCounter++, nextSentence);
+                nextSentence = strtok(NULL, "."); // returns a pointer to the next token in the string
             }
-        } while (strcmp(phrases, "q") != 0);    //end of loop
-        printf("*** End of Tokenizing Phrases Demo ***\n\n");
-    */
+        }
+    } while (strcmp(sentences, "q") != 0);    //end of loop
+    printf("*** End of Tokenizing Sentences Demo ***\n\n");
+
 
 }

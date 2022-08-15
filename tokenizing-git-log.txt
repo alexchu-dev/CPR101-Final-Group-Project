@@ -1,0 +1,2020 @@
+commit e19026e7c82f3bfed14011cd1a6178c8f9715a61
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Tue Aug 9 00:57:08 2022 -0400
+
+    version_tokenizing_2.1
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 4503cd4..3f4cb50 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -16,47 +16,68 @@ Purpose:        This module is to tokenize a string by using strtok() and split
+ //Function starts here. No argument passed and return null
+ void tokenizing(void) {
+ 
+-/*Version 1
+-    printf("*** Start of Tokenizing Strings Demo ***\n");
+-    char    words[BUFFER_SIZE]; //this variable is to store the input string from user
+-    char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
+-    int     wordsCounter;       //this variable stores the numbers of tokens
++    /*Version 1
++        printf("*** Start of Tokenizing Strings Demo ***\n");
++        char    words[BUFFER_SIZE]; //this variable is to store the input string from user
++        char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
++        int     wordsCounter;       //this variable stores the numbers of tokens
+ 
+-    //Start of do-while loop, exits when "q" is received
+-    do {
+-        printf("Type a few words seperated by space (q - to quit):\n");
+-        fgets(words, BUFFER_SIZE, stdin);
+-        words[strlen(words) - 1] = '\0';    //define the null terminator at the end of the string
+-        if (strcmp(words, "q") != 0) {      //compare the input with the exiting string "q"
+-            nextWord = strtok(words, " ");  //string lib function split string by delimiters, returns a pointer to the first token in word
+-            wordsCounter = 1;               //initialise the wordsCounter so that it starts with 1 in the display
+-            while (nextWord) {              //loop continues until there null terminator found, hence it keeps spliting the string
+-                printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
+-                nextWord = strtok(NULL, " "); // returns a pointer to the next token in the string
+-            }       //end of while loop when reach null terminator
+-        }       //end of if
+-    } while (strcmp(words, "q") != 0);      //end of loop
+-    printf("*** End of Tokenizing Words Demo ***\n\n");
+-*/
+-//Version 2
++        //Start of do-while loop, exits when "q" is received
++        do {
++            printf("Type a few words seperated by space (q - to quit):\n");
++            fgets(words, BUFFER_SIZE, stdin);
++            words[strlen(words) - 1] = '\0';    //define the null terminator at the end of the string
++            if (strcmp(words, "q") != 0) {      //compare the input with the exiting string "q"
++                nextWord = strtok(words, " ");  //string lib function split string by delimiters, returns a pointer to the first token in word
++                wordsCounter = 1;               //initialise the wordsCounter so that it starts with 1 in the display
++                while (nextWord) {              //loop continues until there null terminator found, hence it keeps spliting the string
++                    printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
++                    nextWord = strtok(NULL, " "); // returns a pointer to the next token in the string
++                }       //end of while loop when reach null terminator
++            }       //end of if
++        } while (strcmp(words, "q") != 0);      //end of loop
++        printf("*** End of Tokenizing Words Demo ***\n\n");
++    */
++
++    //Version 2
+     printf("*** Start of Tokenizing Phrases Demo ***\n");
+-    char phrases[BUFFER_SIZE];
+-    char* nextPhrase = NULL;
+-    int phrasesCounter;
++    char phrases[BUFFER_SIZE];  //this variable is to store the input string from user
++    char* nextPhrase = NULL;    //this is where the token takes place, string is modified and broken into tokens
++    int phrasesCounter;         //this variable stores the numbers of tokens
+     do {
+         printf("Type a few phrases seperated by comma (q - to quit):\n");
+         fgets(phrases, BUFFER_SIZE, stdin);
+-        phrases[strlen(phrases) - 1] = '\0';
+-        if (strcmp(phrases, "q") != 0) {
+-            nextPhrase = strtok(phrases, ",");
+-            phrasesCounter = 1;
+-            while (nextPhrase) {
++        phrases[strlen(phrases) - 1] = '\0';    //define the null terminator at the end of the string
++        if (strcmp(phrases, "q") != 0) {        //compare the input with the exiting string "q"
++            nextPhrase = strtok(phrases, ",");  //string lib function split string by delimiters, returns a pointer to the first token in word
++            phrasesCounter = 1;                 //initialise the wordsCounter so that it starts with 1 in the display
++            while (nextPhrase) {                //loop continues until there null terminator found, hence it keeps spliting the string
+                 printf("Phrase #%d is \'%s'\n", phrasesCounter++, nextPhrase);
+-                nextPhrase = strtok(NULL, ",");
++                nextPhrase = strtok(NULL, ","); // returns a pointer to the next token in the string
+             }
+         }
+-    } while (strcmp(phrases, "q") != 0);
++    } while (strcmp(phrases, "q") != 0);    //end of loop
+     printf("*** End of Tokenizing Phrases Demo ***\n\n");
+ 
++    /*Version 3
++        printf("*** Start of Tokenizing Phrases Demo ***\n");
++        char phrases[BUFFER_SIZE];  //this variable is to store the input string from user
++        char* nextPhrase = NULL;    //this is where the token takes place, string is modified and broken into tokens
++        int phrasesCounter;         //this variable stores the numbers of tokens
++        do {
++            printf("Type a few phrases seperated by comma (q - to quit):\n");
++            fgets(phrases, BUFFER_SIZE, stdin);
++            phrases[strlen(phrases) - 1] = '\0';    //define the null terminator at the end of the string
++            if (strcmp(phrases, "q") != 0) {        //compare the input with the exiting string "q"
++                nextPhrase = strtok(phrases, ",");  //string lib function split string by delimiters, returns a pointer to the first token in word
++                phrasesCounter = 1;                 //initialise the wordsCounter so that it starts with 1 in the display
++                while (nextPhrase) {                //loop continues until there null terminator found, hence it keeps spliting the string
++                    printf("Phrase #%d is \'%s'\n", phrasesCounter++, nextPhrase);
++                    nextPhrase = strtok(NULL, ","); // returns a pointer to the next token in the string
++                }
++            }
++        } while (strcmp(phrases, "q") != 0);    //end of loop
++        printf("*** End of Tokenizing Phrases Demo ***\n\n");
++    */
+ 
+ }
+
+commit d7a3c6eaa0fc9921770f6a16a63a7aa512838ac4
+Author: alexchu-dev <alexchu414@gmail.com>
+Date:   Mon Aug 8 23:39:52 2022 -0400
+
+    revert_to_version_1_gitbash
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 9709f02..4503cd4 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -16,7 +16,7 @@ Purpose:        This module is to tokenize a string by using strtok() and split
+ //Function starts here. No argument passed and return null
+ void tokenizing(void) {
+ 
+-//Version 1
++/*Version 1
+     printf("*** Start of Tokenizing Strings Demo ***\n");
+     char    words[BUFFER_SIZE]; //this variable is to store the input string from user
+     char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
+@@ -37,8 +37,8 @@ void tokenizing(void) {
+         }       //end of if
+     } while (strcmp(words, "q") != 0);      //end of loop
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+-
+-/*Version 2
++*/
++//Version 2
+     printf("*** Start of Tokenizing Phrases Demo ***\n");
+     char phrases[BUFFER_SIZE];
+     char* nextPhrase = NULL;
+@@ -57,7 +57,6 @@ void tokenizing(void) {
+         }
+     } while (strcmp(phrases, "q") != 0);
+     printf("*** End of Tokenizing Phrases Demo ***\n\n");
+-*/
+ 
+ 
+ }
+
+commit 3cd08a02c8d0da0638a259f4ced9b05975c2fa7d
+Author: alexchu-dev <alexchu414@gmail.com>
+Date:   Mon Aug 8 23:38:32 2022 -0400
+
+    revert_to_version_1_gitbash
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 4503cd4..9709f02 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -16,7 +16,7 @@ Purpose:        This module is to tokenize a string by using strtok() and split
+ //Function starts here. No argument passed and return null
+ void tokenizing(void) {
+ 
+-/*Version 1
++//Version 1
+     printf("*** Start of Tokenizing Strings Demo ***\n");
+     char    words[BUFFER_SIZE]; //this variable is to store the input string from user
+     char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
+@@ -37,8 +37,8 @@ void tokenizing(void) {
+         }       //end of if
+     } while (strcmp(words, "q") != 0);      //end of loop
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+-*/
+-//Version 2
++
++/*Version 2
+     printf("*** Start of Tokenizing Phrases Demo ***\n");
+     char phrases[BUFFER_SIZE];
+     char* nextPhrase = NULL;
+@@ -57,6 +57,7 @@ void tokenizing(void) {
+         }
+     } while (strcmp(phrases, "q") != 0);
+     printf("*** End of Tokenizing Phrases Demo ***\n\n");
++*/
+ 
+ 
+ }
+
+commit d12845b114a039668b66e5814c79e9fe8a1b8c22
+Author: alexchu-dev <alexchu414@gmail.com>
+Date:   Mon Aug 8 23:35:48 2022 -0400
+
+    version_1_gitbash
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 9709f02..4503cd4 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -16,7 +16,7 @@ Purpose:        This module is to tokenize a string by using strtok() and split
+ //Function starts here. No argument passed and return null
+ void tokenizing(void) {
+ 
+-//Version 1
++/*Version 1
+     printf("*** Start of Tokenizing Strings Demo ***\n");
+     char    words[BUFFER_SIZE]; //this variable is to store the input string from user
+     char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
+@@ -37,8 +37,8 @@ void tokenizing(void) {
+         }       //end of if
+     } while (strcmp(words, "q") != 0);      //end of loop
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+-
+-/*Version 2
++*/
++//Version 2
+     printf("*** Start of Tokenizing Phrases Demo ***\n");
+     char phrases[BUFFER_SIZE];
+     char* nextPhrase = NULL;
+@@ -57,7 +57,6 @@ void tokenizing(void) {
+         }
+     } while (strcmp(phrases, "q") != 0);
+     printf("*** End of Tokenizing Phrases Demo ***\n\n");
+-*/
+ 
+ 
+ }
+
+commit 5fa0640b3c8fc7f16bd0af7cdad291198ffc7d8d
+Merge: 1faf2c9 366cb1c
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Thu Aug 4 01:27:34 2022 -0400
+
+    Merge branch 'dev' of https://github.com/alexchu-dev/CPR101-Final-Group-Project into dev
+
+commit 366cb1c45f70c86e5c5e318f8ee9dd8dc507d004
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Thu Aug 4 01:23:04 2022 -0400
+
+    Modified V1 comments in  tokenizing.c, tokenizing.h
+    Initialised V1 comments in converting.c, tokenizing.h
+
+diff --git a/converting.c b/converting.c
+index 0b98b2a..5b081a2 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,30 +1,36 @@
+ /*
+-Author:         Alex Chu, Kenneth, Dan
+-Email:          kchu30@myseneca.ca
+-ID:             153954219
+-Date written:   2022-08-02
++Author:         Alex Chu(V1), Kenneth Reforma(V2), Dan Zhang(V3)
++Email:          kchu30@myseneca.ca, kreforma@myseneca.ca, dzhang101@myseneca.ca
++ID:             153954219, 144680212, 182201210
++Date written:   2022-08-04(V1), 2022-08-dd(V2), 2022-08-dd(V3)
+ Course:         CPR 101 NHH
+ Project:        Final Project
+ Purpose:        This module is to parse a numeric string argument to an integer by calling the atoi() function. From the original user input it is to be in ASCII value because it is a string, then it is being converted to an actual number having the value as typed.
+ */
++
++//Header included, Macro definitions
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 80
+ #include "converting.h"
+ 
+-//V1
++//Function starts here. No argument passed and return null
+ void converting(void) {
++
++//Version 1
+     printf("*** Start of Converting Strings to int Demo ***\n");
+-    char intString[BUFFER_SIZE];
+-    int intNumber;
++    char intString[BUFFER_SIZE];    //this variable is to store the input "INTEGER" string from user
++    int intNumber;      //this variable is to store the INTEGER number converted from the String
++
++    //Start of do-while loop, exits when "q" is received
+     do {
+ 
+         printf("Type an int numeric string (q - to quit):\n");
+         fgets(intString, BUFFER_SIZE, stdin);
+-        intString[strlen(intString) - 1] = '\0';
+-        if (strcmp(intString, "q") != 0) {
+-            intNumber = atoi(intString);
+-            printf("Converted number is %d\n", intNumber);
+-        }
+-    } while (strcmp(intString, "q") != 0);
++        intString[strlen(intString) - 1] = '\0';    //define the null terminator at the end of the string
++        if (strcmp(intString, "q") != 0) {          //compare the input with the exiting string "q"
++            intNumber = atoi(intString);            //convert the numeric string to integer type
++            printf("Converted number is %d\n", intNumber);      //Display the result after conversion
++        }    //end of if
++    } while (strcmp(intString, "q") != 0);          //end of loop
+     printf("*** End of Converting Strings to int Demo ***\n\n");
+ }
+\ No newline at end of file
+diff --git a/converting.h b/converting.h
+index 3b5ac6c..6c4bc08 100644
+--- a/converting.h
++++ b/converting.h
+@@ -1,7 +1,17 @@
++/*
++Author:         Alex Chu(V1), Kenneth Reforma(V2), Dan Zhang(V3)
++Email:          kchu30@myseneca.ca, kreforma@myseneca.ca, dzhang101@myseneca.ca
++ID:             153954219, 144680212, 182201210
++Date written:   2022-08-04(V1), 2022-08-dd(V2), 2022-08-dd(V3)
++Course:         CPR 101 NHH
++Project:        Final Project
++Purpose:        This module is to parse a numeric string argument to an integer by calling the atoi() function. From the original user input it is to be in ASCII value because it is a string, then it is being converted to an actual number having the value as typed.
++*/
++
+ #ifndef _CONVERTING_H_
+ #define _CONVERTING_H_
+-#include <stdio.h>
+-#include <string.h>
+-#include <stdlib.h>
++#include <stdio.h>	//include standard IO functions
++#include <string.h>	//include string lib functions
++#include <stdlib.h>	//include extended standard lib functions
+ void converting(void);
+ #endif // !_CONVERTING_H_
+\ No newline at end of file
+diff --git a/tokenizing.c b/tokenizing.c
+index 0f491a5..9709f02 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -1,8 +1,8 @@
+-/*/*
++/*
+ Author:         Alex Chu
+ Email:          kchu30@myseneca.ca
+ ID:             153954219
+-Date written:   2022-08-02
++Date written:   2022-08-02(V1)
+ Course:         CPR 101 NHH
+ Project:        Final Project
+ Purpose:        This module is to tokenize a string by using strtok() and split them into tokens by using delimiters. The codes written use a space " " as a delimiters to separate a string into words and output them one by one giving the order number respectively. By upgrading the codes, it could be working with data files and output the data which use delimiters. E.g. An input as "Hello World" would be split down to "Hello" and "World".
+@@ -18,22 +18,24 @@ void tokenizing(void) {
+ 
+ //Version 1
+     printf("*** Start of Tokenizing Strings Demo ***\n");
+-    char    words[BUFFER_SIZE]; //stores the input string from user
++    char    words[BUFFER_SIZE]; //this variable is to store the input string from user
+     char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
+     int     wordsCounter;       //this variable stores the numbers of tokens
++
++    //Start of do-while loop, exits when "q" is received
+     do {
+-        printf("Type a few words seperated by space (q - to quit):\n"); 
++        printf("Type a few words seperated by space (q - to quit):\n");
+         fgets(words, BUFFER_SIZE, stdin);
+-        words[strlen(words) - 1] = '\0';    //define the null terminator
+-        if (strcmp(words, "q") != 0) {      //compare the input and only exit when receive "q"
++        words[strlen(words) - 1] = '\0';    //define the null terminator at the end of the string
++        if (strcmp(words, "q") != 0) {      //compare the input with the exiting string "q"
+             nextWord = strtok(words, " ");  //string lib function split string by delimiters, returns a pointer to the first token in word
+-            wordsCounter = 1;
++            wordsCounter = 1;               //initialise the wordsCounter so that it starts with 1 in the display
+             while (nextWord) {              //loop continues until there null terminator found, hence it keeps spliting the string
+                 printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
+                 nextWord = strtok(NULL, " "); // returns a pointer to the next token in the string
+             }       //end of while loop when reach null terminator
+         }       //end of if
+-    } while (strcmp(words, "q") != 0);      //end while loop when 
++    } while (strcmp(words, "q") != 0);      //end of loop
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+ 
+ /*Version 2
+diff --git a/tokenizing.h b/tokenizing.h
+index 6245f6c..2181cb6 100644
+--- a/tokenizing.h
++++ b/tokenizing.h
+@@ -1,6 +1,16 @@
++/*
++Author:         Alex Chu
++Email:          kchu30@myseneca.ca
++ID:             153954219
++Date written:   2022-08-02(V1)
++Course:         CPR 101 NHH
++Project:        Final Project
++Purpose:        This module is to tokenize a string by using strtok() and split them into tokens by using delimiters. The codes written use a space " " as a delimiters to separate a string into words and output them one by one giving the order number respectively. By upgrading the codes, it could be working with data files and output the data which use delimiters. E.g. An input as "Hello World" would be split down to "Hello" and "World".
++*/
++
+ #ifndef _TOKENIZING_H_
+ #define _TOKENIZING_H_
+-#include <stdio.h>
+-#include <string.h>
++#include <stdio.h>	//include standard IO functions
++#include <string.h>	//include string lib functions
+ void tokenizing(void);
+ #endif
+\ No newline at end of file
+
+commit 5cb4f8cbe90bd31fbdf8100bbfaf6000c725e65a
+Author: Dan Zhang <dzhang101@myseneca.ca>
+Date:   Wed Aug 3 09:50:19 2022 -0400
+
+    add comments to main.c, manipulating.c, manipulating.h
+
+diff --git a/main.c b/main.c
+index 70239e8..a272a7b 100644
+--- a/main.c
++++ b/main.c
+@@ -1,31 +1,48 @@
++/*
++Authors:       Dan Zhang, Alex Chu, Kenneth Reforma
++Emails:        dzhang101@myseneca.ca, kchu30@myseneca.ca, kreforma@myseneca.ca
++IDs:           182201210, 153954219, 144680212
++Date written: 2022-08-03
++Course:       CPR 101 NHH
++Project:      Final Project
++Purpose:      The main function controls this program execution by directing
++the calls to other four functions: Fundamentals, Manipulations, Tokenizing and
++Conversions in the program, the main function is the starting point for this
++program execution.
++*/
++
+ #define _CRT_SECURE_NO_WARNINGS
++#include "converting.h"
+ #include "fundamentals.h"
+ #include "manipulating.h"
+-#include "converting.h"
+ #include "tokenizing.h"
+ 
+-int main(void)
+-{
+-    char buff[10];
+-    do {
+-        printf("1 - Fundamentals\n");
+-        printf("2 - Manipulation\n");
+-        printf("3 - Converting\n");
+-        printf("4 - Tokenizing\n");
+-        printf("0 - Exit\n");
+-        printf("Which module to run? \n");
+-        fgets(buff, 10, stdin);
+-        switch (buff[0])
+-        {
+-        case '1': fundamentals();
+-            break;
+-        case '2': manipulating();
+-            break;
+-        case '3': converting();
+-            break;
+-        case '4': tokenizing();
+-            break;
+-        }
+-    } while (buff[0] != '0');
+-    return 0;
++int main(void) {  // main function, starting point for this program execution
++  char buff[10];  // initialize string buff for module selection from user
++  do {            // infinite loop start
++    printf("1 - Fundamentals\n");
++    printf("2 - Manipulation\n");
++    printf("3 - Converting\n");
++    printf("4 - Tokenizing\n");
++    printf("0 - Exit\n");
++    printf("Which module to run? \n");
++    fgets(buff, 10, stdin);  // receive input from user for buff string
++    switch (
++        buff[0]) {  // check the first index of buff string for user selection
++      case '1':     // if user input 1
++        fundamentals();  // call fundamentals function
++        break;
++      case '2':          // if user input 2
++        manipulating();  // call manipulating function
++        break;
++      case '3':        // if user input 3
++        converting();  // call converting function
++        break;
++      case '4':        // if user input 4
++        tokenizing();  // call tokenizing function
++        break;
++    }
++  } while (buff[0] != '0');  // infinite loop unless "0" is input by user
++  return 0;  // return 0 to the operating system, representing no errors;
++             // program end
+ }
+\ No newline at end of file
+diff --git a/manipulating.c b/manipulating.c
+index a176c78..acbd5bb 100644
+--- a/manipulating.c
++++ b/manipulating.c
+@@ -1,24 +1,46 @@
++/*
++Author:       Dan Zhang
++Email:        dzhang101@myseneca.ca
++ID:           182201210
++Date written: 2022-08-03
++Course:       CPR 101 NHH
++Project:      Final Project
++Purpose:      This Manipulations module receives two strings from user input, by
++calling strcat() function from C string library, the program concatenate these
++two strings
++*/
++
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 80
+-#include "manipulating.h"
++#include "manipulating.h"  //include header file to point libraries and structs used
+ 
+-//V1
++// V1
++// concatenate two strings from user input
+ void manipulating(void) {
+-
+-    printf("*** Start of Concatenating Strings Demo ***\n");
+-    char string1[BUFFER_SIZE];
+-    char string2[BUFFER_SIZE];
+-    do {
+-        printf("Type the 1st string (q - to quit):\n");
+-        fgets(string1, BUFFER_SIZE, stdin);
+-        string1[strlen(string1) - 1] = '\0';
+-        if (strcmp(string1, "q") != 0) {
+-            printf("Type the 2nd string:\n");
+-            fgets(string2, BUFFER_SIZE, stdin);
+-            string2[strlen(string2) - 1] = '\0';
+-            strcat(string1, string2);
+-            printf("Concatenated string is \'%s\'\n", string1);
+-        }
+-    } while (strcmp(string1, "q") != 0);
+-    printf("*** End of Concatenating Demo ***\n\n");
++  printf("*** Start of Concatenating Strings Demo ***\n");
++  char string1[BUFFER_SIZE];  // initialize string1 to store first user input
++                              // string
++  char string2[BUFFER_SIZE];  // initialize string1 to store second user input
++                              // string
++  do {                        // infinite loop start
++    printf("Type the 1st string (q - to quit):\n");
++    fgets(string1, BUFFER_SIZE,
++          stdin);  // receive the whole line input for string1
++    string1[strlen(string1) - 1] =
++        '\0';  // add null terminator symbol to the last index of string1
++    if (strcmp(string1, "q") !=
++        0) {  // check if user does not input "q" to quit
++      printf("Type the 2nd string:\n");
++      fgets(string2, BUFFER_SIZE,
++            stdin);  // receive the whole line input for string2
++      string2[strlen(string2) - 1] =
++          '\0';  // add null terminator symbol to the last index of string2
++      strcat(string1, string2);  // use strcat() function from C string library
++                                 // to concatenate string1 and string2
++      printf("Concatenated string is \'%s\'\n",
++             string1);  // print the concatenated string
++    }
++  } while (strcmp(string1, "q") !=
++           0);  // infinite loop end when character 'q' is input by user
++  printf("*** End of Concatenating Demo ***\n\n");
+ }
+\ No newline at end of file
+diff --git a/manipulating.h b/manipulating.h
+index 434f748..90c6bf2 100644
+--- a/manipulating.h
++++ b/manipulating.h
+@@ -1,5 +1,18 @@
++/*
++Author:       Dan Zhang
++Email:        dzhang101@myseneca.ca
++ID:           182201210
++Date written: 2022-08-03
++Course:       CPR 101 NHH
++Project:      Final Project
++Purpose:      This Manipulations module receives two strings from user input, by
++calling strcat() function from C string library, the program concatenate these
++two strings
++*/
++
+ #ifndef _MANIPULATING_H_
+ #define _MANIPULATING_H_
++// include header file to point some system libraries we need to use
+ #include <stdio.h>
+ #include <string.h>
+ void manipulating(void);
+
+commit fddead79980b6893f47619c8a394f20cf5b34224
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Wed Aug 3 03:51:43 2022 -0400
+
+    Tokenizing.c commented. Format standized. Version 2 pre-added in the module c file. Converting.c header added, full comment is to be done.
+
+diff --git a/converting.c b/converting.c
+index a193555..0b98b2a 100644
+--- a/converting.c
++++ b/converting.c
+@@ -1,3 +1,12 @@
++/*
++Author:         Alex Chu, Kenneth, Dan
++Email:          kchu30@myseneca.ca
++ID:             153954219
++Date written:   2022-08-02
++Course:         CPR 101 NHH
++Project:        Final Project
++Purpose:        This module is to parse a numeric string argument to an integer by calling the atoi() function. From the original user input it is to be in ASCII value because it is a string, then it is being converted to an actual number having the value as typed.
++*/
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 80
+ #include "converting.h"
+diff --git a/tokenizing.c b/tokenizing.c
+index 38320f5..0f491a5 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -1,64 +1,60 @@
+-/*
+-*****************************************************************************
+-                          CPR101 Final Group Project
+-Full Name  : Alex Chu
+-Student ID#: 153954219
+-Email      : kchu30@myseneca.ca
+-Section    : NHH
+-
+-Authenticity Declaration:
+-I declare this submission is the result of my own work and has not been
+-shared with any other student or 3rd party content provider. This submitted
+-piece of work is entirely of my own creation.
+-*****************************************************************************
++/*/*
++Author:         Alex Chu
++Email:          kchu30@myseneca.ca
++ID:             153954219
++Date written:   2022-08-02
++Course:         CPR 101 NHH
++Project:        Final Project
++Purpose:        This module is to tokenize a string by using strtok() and split them into tokens by using delimiters. The codes written use a space " " as a delimiters to separate a string into words and output them one by one giving the order number respectively. By upgrading the codes, it could be working with data files and output the data which use delimiters. E.g. An input as "Hello World" would be split down to "Hello" and "World".
+ */
+ 
++//Header included, Macro definitions
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 300
+ #include "tokenizing.h"
+ 
+-
++//Function starts here. No argument passed and return null
+ void tokenizing(void) {
+ 
+-//Version 1 of the codes
++//Version 1
+     printf("*** Start of Tokenizing Strings Demo ***\n");
+-    char words[BUFFER_SIZE];
+-    char* nextWord = NULL;
+-    int wordsCounter;
++    char    words[BUFFER_SIZE]; //stores the input string from user
++    char*   nextWord = NULL;    //this is where the token takes place, string is modified and broken into tokens
++    int     wordsCounter;       //this variable stores the numbers of tokens
+     do {
+-        printf("Type a few words seperated by space (q - to quit):\n");
++        printf("Type a few words seperated by space (q - to quit):\n"); 
+         fgets(words, BUFFER_SIZE, stdin);
+-        words[strlen(words) - 1] = '\0';
+-        if (strcmp(words, "q") != 0) {
+-            nextWord = strtok(words, " ");
++        words[strlen(words) - 1] = '\0';    //define the null terminator
++        if (strcmp(words, "q") != 0) {      //compare the input and only exit when receive "q"
++            nextWord = strtok(words, " ");  //string lib function split string by delimiters, returns a pointer to the first token in word
+             wordsCounter = 1;
+-            while (nextWord) {
++            while (nextWord) {              //loop continues until there null terminator found, hence it keeps spliting the string
+                 printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
+-                nextWord = strtok(NULL, " ");
+-            }
+-        }
+-    } while (strcmp(words, "q") != 0);
++                nextWord = strtok(NULL, " "); // returns a pointer to the next token in the string
++            }       //end of while loop when reach null terminator
++        }       //end of if
++    } while (strcmp(words, "q") != 0);      //end while loop when 
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+ 
+-/*Version 2 of the codes
++/*Version 2
+     printf("*** Start of Tokenizing Phrases Demo ***\n");
+     char phrases[BUFFER_SIZE];
+     char* nextPhrase = NULL;
+-    int wordsCounter;
++    int phrasesCounter;
+     do {
+-        printf("Type a few words seperated by space (q - to quit):\n");
+-        fgets(words, BUFFER_SIZE, stdin);
+-        words[strlen(words) - 1] = '\0';
+-        if (strcmp(words, "q") != 0) {
+-            nextWord = strtok(words, " ");
+-            wordsCounter = 1;
+-            while (nextWord) {
+-                printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
+-                nextWord = strtok(NULL, " ");
++        printf("Type a few phrases seperated by comma (q - to quit):\n");
++        fgets(phrases, BUFFER_SIZE, stdin);
++        phrases[strlen(phrases) - 1] = '\0';
++        if (strcmp(phrases, "q") != 0) {
++            nextPhrase = strtok(phrases, ",");
++            phrasesCounter = 1;
++            while (nextPhrase) {
++                printf("Phrase #%d is \'%s'\n", phrasesCounter++, nextPhrase);
++                nextPhrase = strtok(NULL, ",");
+             }
+         }
+-    } while (strcmp(words, "q") != 0);
+-    printf("*** End of Tokenizing Words Demo ***\n\n");
++    } while (strcmp(phrases, "q") != 0);
++    printf("*** End of Tokenizing Phrases Demo ***\n\n");
+ */
+ 
+ 
+
+commit 1faf2c90fe90e2943aed1e3a46f3603f046ec249
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Wed Aug 3 01:49:41 2022 -0400
+
+    made question conditions in .c
+
+diff --git a/fundamentals.c b/fundamentals.c
+index 901cf80..e7c8558 100644
+--- a/fundamentals.c
++++ b/fundamentals.c
+@@ -37,22 +37,26 @@ void fundamentals(void) {
+         printf("Type not empty string (q - to quit):\n"); // Ask the user to input a string or input 'q' to go back to main menu
+         fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in string variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
+         buffer1[strlen(buffer1) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
+-        if (strcmp(buffer1, "q") != 0) {
++        if (strcmp(buffer1, "q") != 0) { // Did the user inputs 'q'? If NO, use Code Block 1
++
+             // Start of Code Block 1: Execute if the input string is not character 'q'
+             printf("Type the character position within the string:\n"); // Ask the user to input an integer that will be the basis of the character output
+             fgets(numInput, NUM_INPUT_SIZE, stdin); // Store the input integer in string variable numInput from the standard input. Read maximum characters equal to NUM_INPUT_SIZE.
+             numInput[strlen(numInput) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
+             position = atoi(numInput); // Convert the input integer in String format into Integer format and store in variable position
+-            if (position >= strlen(buffer1)) {
++            if (position >= strlen(buffer1)) { // Did the user inputs an integer greater than the string length? If YES, use Code Block 1.1
++
+                 // Start of Code Block 1.1: Execute if the input integer is greater than or equal to the length of input string
+                 position = strlen(buffer1) - 1; // Replace the value in variable position by the position of the last character in the input string
+                 printf("Too big... Position reduced to max. available\n"); // Notify the user that the input integer is exceeding the length of the input string
+                 // End of Code Block 1.1
++
+             }
+             printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]); // Output the character positioned at the value inside variable position
+             // End of Code Block 1
++
+         }
+-    } while (strcmp(buffer1, "q") != 0); // Repeat the DO-WHILE loop until the user enters the character 'q'
++    } while (strcmp(buffer1, "q") != 0); // Did the user input 'q'? If NO, loop again
+     // End a DO-WHILE loop
+ 
+     printf("*** End of Converting Strings to int Demo ***\n\n"); // Output an ending statement to mark end of the module
+
+commit 01558876bfd4849b0ad766ff096d7c01832eb4ee
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Wed Aug 3 01:44:59 2022 -0400
+
+    modified c and h
+
+diff --git a/fundamentals.c b/fundamentals.c
+index 129a7fe..901cf80 100644
+--- a/fundamentals.c
++++ b/fundamentals.c
+@@ -3,12 +3,13 @@ Author: Kenneth Reforma
+ Email: kreforma@myseneca.ca
+ ID: 144680212
+ Date written: 2022-08-03
+-Course: CPR 101
+-Project V1
+-Purpose: The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0. Consider the following example:
+-Input String: Kenneth Reforma
+-Input Integer: 10
+-OUTPUT: 'f'
++Course: CPR 101 NHH
++Project: Final Project
++Purpose: The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0. 
++  Consider the following example:
++    Input String: Kenneth Reforma
++    Input Integer: 10
++    OUTPUT: 'f'
+ 
+ If a 'q' input was entered by the user, the module will end and go back to the main menu.
+ */
+diff --git a/fundamentals.h b/fundamentals.h
+index 051184a..1330149 100644
+--- a/fundamentals.h
++++ b/fundamentals.h
+@@ -1,7 +1,24 @@
++/*
++Author: Kenneth Reforma
++Email: kreforma@myseneca.ca
++ID: 144680212
++Date written: 2022-08-03
++Course: CPR 101 NHH
++Project: Final Project
++Purpose: The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0.
++  Consider the following example:
++    Input String: Kenneth Reforma
++    Input Integer: 10
++    OUTPUT: 'f'
++
++If a 'q' input was entered by the user, the module will end and go back to the main menu.
++*/
++
++
+ #ifndef _FUNDAMENTALS_H_
+ #define _FUNDAMENTALS_H_
+-#include <stdio.h>
+-#include <string.h>
+-#include <stdlib.h>
+-void fundamentals(void);
++#include <stdio.h> // Use the standard input-output library
++#include <string.h> // Use the string library
++#include <stdlib.h> // Use the extended standard library
++void fundamentals(void); // Use fundamentals prototype
+ #endif
+\ No newline at end of file
+
+commit 03b1fe163cd822d7cc090443cee5ec9e1a869f4d
+Merge: d75d1de 073485b
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Wed Aug 3 01:28:22 2022 -0400
+
+    Merge branch 'dev' of https://github.com/alexchu-dev/CPR101-Final-Group-Project into dev
+
+commit d75d1de7ec5153e5ad2247ef872aea787890e042
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Wed Aug 3 01:27:53 2022 -0400
+
+    completed comments on fundamentals.c
+
+diff --git a/fundamentals.c b/fundamentals.c
+index 473c32f..129a7fe 100644
+--- a/fundamentals.c
++++ b/fundamentals.c
+@@ -34,21 +34,26 @@ void fundamentals(void) {
+     // Start a DO-WHILE loop
+     do {
+         printf("Type not empty string (q - to quit):\n"); // Ask the user to input a string or input 'q' to go back to main menu
+-        fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
+-        buffer1[strlen(buffer1) - 1] = '\0'; // 
++        fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in string variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
++        buffer1[strlen(buffer1) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
+         if (strcmp(buffer1, "q") != 0) {
+-            printf("Type the character position within the string:\n");
+-            fgets(numInput, NUM_INPUT_SIZE, stdin);
+-            numInput[strlen(numInput) - 1] = '\0';
+-            position = atoi(numInput);
++            // Start of Code Block 1: Execute if the input string is not character 'q'
++            printf("Type the character position within the string:\n"); // Ask the user to input an integer that will be the basis of the character output
++            fgets(numInput, NUM_INPUT_SIZE, stdin); // Store the input integer in string variable numInput from the standard input. Read maximum characters equal to NUM_INPUT_SIZE.
++            numInput[strlen(numInput) - 1] = '\0'; // Safely end the string by adding a null character based on the length of the input string
++            position = atoi(numInput); // Convert the input integer in String format into Integer format and store in variable position
+             if (position >= strlen(buffer1)) {
+-                position = strlen(buffer1) - 1;
+-                printf("Too big... Position reduced to max. available\n");
++                // Start of Code Block 1.1: Execute if the input integer is greater than or equal to the length of input string
++                position = strlen(buffer1) - 1; // Replace the value in variable position by the position of the last character in the input string
++                printf("Too big... Position reduced to max. available\n"); // Notify the user that the input integer is exceeding the length of the input string
++                // End of Code Block 1.1
+             }
+-            printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]);
++            printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]); // Output the character positioned at the value inside variable position
++            // End of Code Block 1
+         }
+-    } while (strcmp(buffer1, "q") != 0);
++    } while (strcmp(buffer1, "q") != 0); // Repeat the DO-WHILE loop until the user enters the character 'q'
+     // End a DO-WHILE loop
+ 
+     printf("*** End of Converting Strings to int Demo ***\n\n"); // Output an ending statement to mark end of the module
+-}
+\ No newline at end of file
++}
++// End the fundamentals function and return the control to caller (main function)
+\ No newline at end of file
+
+commit 073485bd177fb9ad247c54880c27dccb170b8ea6
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Wed Aug 3 01:23:39 2022 -0400
+
+    updated
+
+diff --git a/tokenizing.c b/tokenizing.c
+index 0822f0c..38320f5 100644
+--- a/tokenizing.c
++++ b/tokenizing.c
+@@ -1,11 +1,27 @@
++/*
++*****************************************************************************
++                          CPR101 Final Group Project
++Full Name  : Alex Chu
++Student ID#: 153954219
++Email      : kchu30@myseneca.ca
++Section    : NHH
++
++Authenticity Declaration:
++I declare this submission is the result of my own work and has not been
++shared with any other student or 3rd party content provider. This submitted
++piece of work is entirely of my own creation.
++*****************************************************************************
++*/
++
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 300
+ #include "tokenizing.h"
+ 
+-//V1
++
+ void tokenizing(void) {
+ 
+-    printf("*** Start of Concatenating Strings Demo ***\n");
++//Version 1 of the codes
++    printf("*** Start of Tokenizing Strings Demo ***\n");
+     char words[BUFFER_SIZE];
+     char* nextWord = NULL;
+     int wordsCounter;
+@@ -23,4 +39,27 @@ void tokenizing(void) {
+         }
+     } while (strcmp(words, "q") != 0);
+     printf("*** End of Tokenizing Words Demo ***\n\n");
+-}
+\ No newline at end of file
++
++/*Version 2 of the codes
++    printf("*** Start of Tokenizing Phrases Demo ***\n");
++    char phrases[BUFFER_SIZE];
++    char* nextPhrase = NULL;
++    int wordsCounter;
++    do {
++        printf("Type a few words seperated by space (q - to quit):\n");
++        fgets(words, BUFFER_SIZE, stdin);
++        words[strlen(words) - 1] = '\0';
++        if (strcmp(words, "q") != 0) {
++            nextWord = strtok(words, " ");
++            wordsCounter = 1;
++            while (nextWord) {
++                printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
++                nextWord = strtok(NULL, " ");
++            }
++        }
++    } while (strcmp(words, "q") != 0);
++    printf("*** End of Tokenizing Words Demo ***\n\n");
++*/
++
++
++}
+
+commit c9f1ab211a6e2f610782bd8cab255ae11e76a6c1
+Author: kpreforma <kreforma@myseneca.ca>
+Date:   Wed Aug 3 00:53:37 2022 -0400
+
+    mod-fund-comments
+
+diff --git a/fundamentals.c b/fundamentals.c
+index 430d0c4..473c32f 100644
+--- a/fundamentals.c
++++ b/fundamentals.c
+@@ -1,21 +1,41 @@
++/*
++Author: Kenneth Reforma
++Email: kreforma@myseneca.ca
++ID: 144680212
++Date written: 2022-08-03
++Course: CPR 101
++Project V1
++Purpose: The "fundamentals" module gets a string from the user. Afterwards, an input integer will be asked. The program will output the character at the nth position of the string based on the input integer. Note that the first character of the string starts at position 0. Consider the following example:
++Input String: Kenneth Reforma
++Input Integer: 10
++OUTPUT: 'f'
++
++If a 'q' input was entered by the user, the module will end and go back to the main menu.
++*/
++
++// Start macros and headers here
+ #define _CRT_SECURE_NO_WARNINGS
+ #define BUFFER_SIZE 80
+ #define NUM_INPUT_SIZE 10
+ #include "fundamentals.h"
++// End macros and headers
+ 
+-
++// Start the fundamentals function with null return and null parameter
+ void fundamentals(void) {
++// V1
++    printf("*** Start of Index Strings Demo ***\n"); // Output a header title of the module
+ 
+-//V1
+-    printf("*** Start of Index Strings Demo ***\n");
+-    char buffer1[BUFFER_SIZE];
+-    char numInput[NUM_INPUT_SIZE];
+-    size_t position;
+-    do {
++    // Start variable declarations
++    char buffer1[BUFFER_SIZE]; // String named "buffer1" with size equal to BUFFER_SIZE macro
++    char numInput[NUM_INPUT_SIZE]; // String named "numInput"with size equal to NUM_INPUT_SIZE macro
++    size_t position; // Unsigned integer named "position"
++    // End variable declarations
+ 
+-        printf("Type not empty string (q - to quit):\n");
+-        fgets(buffer1, BUFFER_SIZE, stdin);
+-        buffer1[strlen(buffer1) - 1] = '\0';
++    // Start a DO-WHILE loop
++    do {
++        printf("Type not empty string (q - to quit):\n"); // Ask the user to input a string or input 'q' to go back to main menu
++        fgets(buffer1, BUFFER_SIZE, stdin); // Store the input string in variable buffer1 from the standard input. Read maximum characters equal to BUFFER_SIZE.
++        buffer1[strlen(buffer1) - 1] = '\0'; // 
+         if (strcmp(buffer1, "q") != 0) {
+             printf("Type the character position within the string:\n");
+             fgets(numInput, NUM_INPUT_SIZE, stdin);
+@@ -28,5 +48,7 @@ void fundamentals(void) {
+             printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]);
+         }
+     } while (strcmp(buffer1, "q") != 0);
+-    printf("*** End of Converting Strings to int Demo ***\n\n");
++    // End a DO-WHILE loop
++
++    printf("*** End of Converting Strings to int Demo ***\n\n"); // Output an ending statement to mark end of the module
+ }
+\ No newline at end of file
+
+commit 2cbd10c3e78e7a3e27a62d9a333d77beadac6668
+Author: alexchu-dev <61229735+alexchu-dev@users.noreply.github.com>
+Date:   Mon Aug 1 17:27:25 2022 -0400
+
+    Update README.md
+
+diff --git a/README.md b/README.md
+index fff2dd3..1a27dde 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+ # CPR101 Final Group Project
+-## *This is the repo of the CPR101 Final Group Project.*
++## **This is the repo of the CPR101 Final Group Project.**
+ 
+ Please commit your works by pull and push.
+
+commit b3500654ac48bbe85c5e91f00b7ff25c36acb5dd
+Author: alexchu-dev <61229735+alexchu-dev@users.noreply.github.com>
+Date:   Mon Aug 1 17:27:12 2022 -0400
+
+    Update README.md
+
+diff --git a/README.md b/README.md
+index 7f55291..fff2dd3 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,4 @@
+-#CPR101 Final Group Project
+-##*This is the repo of the CPR101 Final Group Project.*
++# CPR101 Final Group Project
++## *This is the repo of the CPR101 Final Group Project.*
+ 
+ Please commit your works by pull and push.
+
+commit 9eb42bdb9e01d4e2289d7b217f016a91d620c455
+Author: alexchu-dev <61229735+alexchu-dev@users.noreply.github.com>
+Date:   Mon Aug 1 17:26:41 2022 -0400
+
+    Update README.md
+
+diff --git a/README.md b/README.md
+index 0cc0120..7f55291 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,4 @@
+ #CPR101 Final Group Project
+-##This is the repo of the CPR101 Final Group Project.
++##*This is the repo of the CPR101 Final Group Project.*
++
+ Please commit your works by pull and push.
+
+commit 81158e93d089bc8c541835837e562f30f45f370e
+Author: alexchu-dev <61229735+alexchu-dev@users.noreply.github.com>
+Date:   Mon Aug 1 17:26:26 2022 -0400
+
+    Update README.md
+
+diff --git a/README.md b/README.md
+index 80da421..0cc0120 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,3 @@
+-CPR101 Final Group Project
+\ No newline at end of file
++#CPR101 Final Group Project
++##This is the repo of the CPR101 Final Group Project.
++Please commit your works by pull and push.
+
+commit 823de7d64b5323d1394a7980fb8b85dfe5fbed98
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Mon Aug 1 17:24:17 2022 -0400
+
+    Add project files.
+
+diff --git a/CPR101 Final Group Project.sln b/CPR101 Final Group Project.sln
+new file mode 100644
+index 0000000..3d8420b
+--- /dev/null
++++ b/CPR101 Final Group Project.sln	
+@@ -0,0 +1,31 @@
++﻿
++Microsoft Visual Studio Solution File, Format Version 12.00
++# Visual Studio Version 17
++VisualStudioVersion = 17.1.32421.90
++MinimumVisualStudioVersion = 10.0.40219.1
++Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPR101 Final Group Project", "CPR101 Final Group Project.vcxproj", "{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}"
++EndProject
++Global
++	GlobalSection(SolutionConfigurationPlatforms) = preSolution
++		Debug|x64 = Debug|x64
++		Debug|x86 = Debug|x86
++		Release|x64 = Release|x64
++		Release|x86 = Release|x86
++	EndGlobalSection
++	GlobalSection(ProjectConfigurationPlatforms) = postSolution
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Debug|x64.ActiveCfg = Debug|x64
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Debug|x64.Build.0 = Debug|x64
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Debug|x86.ActiveCfg = Debug|Win32
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Debug|x86.Build.0 = Debug|Win32
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Release|x64.ActiveCfg = Release|x64
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Release|x64.Build.0 = Release|x64
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Release|x86.ActiveCfg = Release|Win32
++		{5F7B0385-2787-44E2-85A8-2F7B7BB9A4AF}.Release|x86.Build.0 = Release|Win32
++	EndGlobalSection
++	GlobalSection(SolutionProperties) = preSolution
++		HideSolutionNode = FALSE
++	EndGlobalSection
++	GlobalSection(ExtensibilityGlobals) = postSolution
++		SolutionGuid = {1911C865-D9AC-4AD4-9CFF-ED69D928E482}
++	EndGlobalSection
++EndGlobal
+diff --git a/CPR101 Final Group Project.vcxproj b/CPR101 Final Group Project.vcxproj
+new file mode 100644
+index 0000000..6c3e71d
+--- /dev/null
++++ b/CPR101 Final Group Project.vcxproj	
+@@ -0,0 +1,157 @@
++<?xml version="1.0" encoding="utf-8"?>
++<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <ItemGroup Label="ProjectConfigurations">
++    <ProjectConfiguration Include="Debug|Win32">
++      <Configuration>Debug</Configuration>
++      <Platform>Win32</Platform>
++    </ProjectConfiguration>
++    <ProjectConfiguration Include="Release|Win32">
++      <Configuration>Release</Configuration>
++      <Platform>Win32</Platform>
++    </ProjectConfiguration>
++    <ProjectConfiguration Include="Debug|x64">
++      <Configuration>Debug</Configuration>
++      <Platform>x64</Platform>
++    </ProjectConfiguration>
++    <ProjectConfiguration Include="Release|x64">
++      <Configuration>Release</Configuration>
++      <Platform>x64</Platform>
++    </ProjectConfiguration>
++  </ItemGroup>
++  <ItemGroup>
++    <ClInclude Include="converting.h" />
++    <ClInclude Include="fundamentals.h" />
++    <ClInclude Include="manipulating.h" />
++    <ClInclude Include="tokenizing.h" />
++  </ItemGroup>
++  <ItemGroup>
++    <ClCompile Include="converting.c" />
++    <ClCompile Include="fundamentals.c" />
++    <ClCompile Include="main.c" />
++    <ClCompile Include="manipulating.c" />
++    <ClCompile Include="tokenizing.c" />
++  </ItemGroup>
++  <PropertyGroup Label="Globals">
++    <VCProjectVersion>16.0</VCProjectVersion>
++    <Keyword>Win32Proj</Keyword>
++    <ProjectGuid>{5f7b0385-2787-44e2-85a8-2f7b7bb9a4af}</ProjectGuid>
++    <RootNamespace>CPR101FinalGroupProject</RootNamespace>
++    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
++  </PropertyGroup>
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
++    <ConfigurationType>Application</ConfigurationType>
++    <UseDebugLibraries>true</UseDebugLibraries>
++    <PlatformToolset>v143</PlatformToolset>
++    <CharacterSet>Unicode</CharacterSet>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
++    <ConfigurationType>Application</ConfigurationType>
++    <UseDebugLibraries>false</UseDebugLibraries>
++    <PlatformToolset>v143</PlatformToolset>
++    <WholeProgramOptimization>true</WholeProgramOptimization>
++    <CharacterSet>Unicode</CharacterSet>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
++    <ConfigurationType>Application</ConfigurationType>
++    <UseDebugLibraries>true</UseDebugLibraries>
++    <PlatformToolset>v143</PlatformToolset>
++    <CharacterSet>Unicode</CharacterSet>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
++    <ConfigurationType>Application</ConfigurationType>
++    <UseDebugLibraries>false</UseDebugLibraries>
++    <PlatformToolset>v143</PlatformToolset>
++    <WholeProgramOptimization>true</WholeProgramOptimization>
++    <CharacterSet>Unicode</CharacterSet>
++  </PropertyGroup>
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
++  <ImportGroup Label="ExtensionSettings">
++  </ImportGroup>
++  <ImportGroup Label="Shared">
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
++  <PropertyGroup Label="UserMacros" />
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
++    <LinkIncremental>true</LinkIncremental>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
++    <LinkIncremental>false</LinkIncremental>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <LinkIncremental>true</LinkIncremental>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <LinkIncremental>false</LinkIncremental>
++  </PropertyGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
++    <ClCompile>
++      <WarningLevel>Level3</WarningLevel>
++      <SDLCheck>true</SDLCheck>
++      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <ConformanceMode>true</ConformanceMode>
++    </ClCompile>
++    <Link>
++      <SubSystem>Console</SubSystem>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++    </Link>
++  </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
++    <ClCompile>
++      <WarningLevel>Level3</WarningLevel>
++      <FunctionLevelLinking>true</FunctionLevelLinking>
++      <IntrinsicFunctions>true</IntrinsicFunctions>
++      <SDLCheck>true</SDLCheck>
++      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <ConformanceMode>true</ConformanceMode>
++    </ClCompile>
++    <Link>
++      <SubSystem>Console</SubSystem>
++      <EnableCOMDATFolding>true</EnableCOMDATFolding>
++      <OptimizeReferences>true</OptimizeReferences>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++    </Link>
++  </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
++    <ClCompile>
++      <WarningLevel>Level3</WarningLevel>
++      <SDLCheck>true</SDLCheck>
++      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <ConformanceMode>true</ConformanceMode>
++    </ClCompile>
++    <Link>
++      <SubSystem>Console</SubSystem>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++    </Link>
++  </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <ClCompile>
++      <WarningLevel>Level3</WarningLevel>
++      <FunctionLevelLinking>true</FunctionLevelLinking>
++      <IntrinsicFunctions>true</IntrinsicFunctions>
++      <SDLCheck>true</SDLCheck>
++      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <ConformanceMode>true</ConformanceMode>
++    </ClCompile>
++    <Link>
++      <SubSystem>Console</SubSystem>
++      <EnableCOMDATFolding>true</EnableCOMDATFolding>
++      <OptimizeReferences>true</OptimizeReferences>
++      <GenerateDebugInformation>true</GenerateDebugInformation>
++    </Link>
++  </ItemDefinitionGroup>
++  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
++  <ImportGroup Label="ExtensionTargets">
++  </ImportGroup>
++</Project>
+\ No newline at end of file
+diff --git a/CPR101 Final Group Project.vcxproj.filters b/CPR101 Final Group Project.vcxproj.filters
+new file mode 100644
+index 0000000..1b5b186
+--- /dev/null
++++ b/CPR101 Final Group Project.vcxproj.filters	
+@@ -0,0 +1,48 @@
++﻿<?xml version="1.0" encoding="utf-8"?>
++<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
++  <ItemGroup>
++    <Filter Include="Source Files">
++      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
++      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
++    </Filter>
++    <Filter Include="Header Files">
++      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
++      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
++    </Filter>
++    <Filter Include="Resource Files">
++      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
++      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
++    </Filter>
++  </ItemGroup>
++  <ItemGroup>
++    <ClInclude Include="..\CPR Project\CPR Project\converting.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
++    <ClInclude Include="..\CPR Project\CPR Project\fundamentals.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
++    <ClInclude Include="manipulating.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
++    <ClInclude Include="tokenizing.h">
++      <Filter>Header Files</Filter>
++    </ClInclude>
++  </ItemGroup>
++  <ItemGroup>
++    <ClCompile Include="..\CPR Project\CPR Project\converting.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
++    <ClCompile Include="..\CPR Project\CPR Project\fundamentals.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
++    <ClCompile Include="..\CPR Project\CPR Project\main.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
++    <ClCompile Include="manipulating.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
++    <ClCompile Include="tokenizing.c">
++      <Filter>Source Files</Filter>
++    </ClCompile>
++  </ItemGroup>
++</Project>
+\ No newline at end of file
+diff --git a/converting.c b/converting.c
+new file mode 100644
+index 0000000..a193555
+--- /dev/null
++++ b/converting.c
+@@ -0,0 +1,21 @@
++#define _CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "converting.h"
++
++//V1
++void converting(void) {
++    printf("*** Start of Converting Strings to int Demo ***\n");
++    char intString[BUFFER_SIZE];
++    int intNumber;
++    do {
++
++        printf("Type an int numeric string (q - to quit):\n");
++        fgets(intString, BUFFER_SIZE, stdin);
++        intString[strlen(intString) - 1] = '\0';
++        if (strcmp(intString, "q") != 0) {
++            intNumber = atoi(intString);
++            printf("Converted number is %d\n", intNumber);
++        }
++    } while (strcmp(intString, "q") != 0);
++    printf("*** End of Converting Strings to int Demo ***\n\n");
++}
+\ No newline at end of file
+diff --git a/converting.h b/converting.h
+new file mode 100644
+index 0000000..3b5ac6c
+--- /dev/null
++++ b/converting.h
+@@ -0,0 +1,7 @@
++#ifndef _CONVERTING_H_
++#define _CONVERTING_H_
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++void converting(void);
++#endif // !_CONVERTING_H_
+\ No newline at end of file
+diff --git a/fundamentals.c b/fundamentals.c
+new file mode 100644
+index 0000000..430d0c4
+--- /dev/null
++++ b/fundamentals.c
+@@ -0,0 +1,32 @@
++#define _CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#define NUM_INPUT_SIZE 10
++#include "fundamentals.h"
++
++
++void fundamentals(void) {
++
++//V1
++    printf("*** Start of Index Strings Demo ***\n");
++    char buffer1[BUFFER_SIZE];
++    char numInput[NUM_INPUT_SIZE];
++    size_t position;
++    do {
++
++        printf("Type not empty string (q - to quit):\n");
++        fgets(buffer1, BUFFER_SIZE, stdin);
++        buffer1[strlen(buffer1) - 1] = '\0';
++        if (strcmp(buffer1, "q") != 0) {
++            printf("Type the character position within the string:\n");
++            fgets(numInput, NUM_INPUT_SIZE, stdin);
++            numInput[strlen(numInput) - 1] = '\0';
++            position = atoi(numInput);
++            if (position >= strlen(buffer1)) {
++                position = strlen(buffer1) - 1;
++                printf("Too big... Position reduced to max. available\n");
++            }
++            printf("The character found at %d position is \'%c\'\n",(int)position, buffer1[position]);
++        }
++    } while (strcmp(buffer1, "q") != 0);
++    printf("*** End of Converting Strings to int Demo ***\n\n");
++}
+\ No newline at end of file
+diff --git a/fundamentals.h b/fundamentals.h
+new file mode 100644
+index 0000000..051184a
+--- /dev/null
++++ b/fundamentals.h
+@@ -0,0 +1,7 @@
++#ifndef _FUNDAMENTALS_H_
++#define _FUNDAMENTALS_H_
++#include <stdio.h>
++#include <string.h>
++#include <stdlib.h>
++void fundamentals(void);
++#endif
+\ No newline at end of file
+diff --git a/main.c b/main.c
+new file mode 100644
+index 0000000..70239e8
+--- /dev/null
++++ b/main.c
+@@ -0,0 +1,31 @@
++#define _CRT_SECURE_NO_WARNINGS
++#include "fundamentals.h"
++#include "manipulating.h"
++#include "converting.h"
++#include "tokenizing.h"
++
++int main(void)
++{
++    char buff[10];
++    do {
++        printf("1 - Fundamentals\n");
++        printf("2 - Manipulation\n");
++        printf("3 - Converting\n");
++        printf("4 - Tokenizing\n");
++        printf("0 - Exit\n");
++        printf("Which module to run? \n");
++        fgets(buff, 10, stdin);
++        switch (buff[0])
++        {
++        case '1': fundamentals();
++            break;
++        case '2': manipulating();
++            break;
++        case '3': converting();
++            break;
++        case '4': tokenizing();
++            break;
++        }
++    } while (buff[0] != '0');
++    return 0;
++}
+\ No newline at end of file
+diff --git a/manipulating.c b/manipulating.c
+new file mode 100644
+index 0000000..a176c78
+--- /dev/null
++++ b/manipulating.c
+@@ -0,0 +1,24 @@
++#define _CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 80
++#include "manipulating.h"
++
++//V1
++void manipulating(void) {
++
++    printf("*** Start of Concatenating Strings Demo ***\n");
++    char string1[BUFFER_SIZE];
++    char string2[BUFFER_SIZE];
++    do {
++        printf("Type the 1st string (q - to quit):\n");
++        fgets(string1, BUFFER_SIZE, stdin);
++        string1[strlen(string1) - 1] = '\0';
++        if (strcmp(string1, "q") != 0) {
++            printf("Type the 2nd string:\n");
++            fgets(string2, BUFFER_SIZE, stdin);
++            string2[strlen(string2) - 1] = '\0';
++            strcat(string1, string2);
++            printf("Concatenated string is \'%s\'\n", string1);
++        }
++    } while (strcmp(string1, "q") != 0);
++    printf("*** End of Concatenating Demo ***\n\n");
++}
+\ No newline at end of file
+diff --git a/manipulating.h b/manipulating.h
+new file mode 100644
+index 0000000..434f748
+--- /dev/null
++++ b/manipulating.h
+@@ -0,0 +1,6 @@
++#ifndef _MANIPULATING_H_
++#define _MANIPULATING_H_
++#include <stdio.h>
++#include <string.h>
++void manipulating(void);
++#endif
+\ No newline at end of file
+diff --git a/tokenizing.c b/tokenizing.c
+new file mode 100644
+index 0000000..0822f0c
+--- /dev/null
++++ b/tokenizing.c
+@@ -0,0 +1,26 @@
++#define _CRT_SECURE_NO_WARNINGS
++#define BUFFER_SIZE 300
++#include "tokenizing.h"
++
++//V1
++void tokenizing(void) {
++
++    printf("*** Start of Concatenating Strings Demo ***\n");
++    char words[BUFFER_SIZE];
++    char* nextWord = NULL;
++    int wordsCounter;
++    do {
++        printf("Type a few words seperated by space (q - to quit):\n");
++        fgets(words, BUFFER_SIZE, stdin);
++        words[strlen(words) - 1] = '\0';
++        if (strcmp(words, "q") != 0) {
++            nextWord = strtok(words, " ");
++            wordsCounter = 1;
++            while (nextWord) {
++                printf("Word #%d is \'%s'\n", wordsCounter++, nextWord);
++                nextWord = strtok(NULL, " ");
++            }
++        }
++    } while (strcmp(words, "q") != 0);
++    printf("*** End of Tokenizing Words Demo ***\n\n");
++}
+\ No newline at end of file
+diff --git a/tokenizing.h b/tokenizing.h
+new file mode 100644
+index 0000000..6245f6c
+--- /dev/null
++++ b/tokenizing.h
+@@ -0,0 +1,6 @@
++#ifndef _TOKENIZING_H_
++#define _TOKENIZING_H_
++#include <stdio.h>
++#include <string.h>
++void tokenizing(void);
++#endif
+\ No newline at end of file
+
+commit 58a17c4ebf0b760f12f8ef8573a2d6629cbc0e82
+Author: alexchu-afk <alexchu414@gmail.com>
+Date:   Mon Aug 1 17:24:15 2022 -0400
+
+    Add .gitattributes, .gitignore, and README.md.
+
+diff --git a/.gitattributes b/.gitattributes
+new file mode 100644
+index 0000000..1ff0c42
+--- /dev/null
++++ b/.gitattributes
+@@ -0,0 +1,63 @@
++###############################################################################
++# Set default behavior to automatically normalize line endings.
++###############################################################################
++* text=auto
++
++###############################################################################
++# Set default behavior for command prompt diff.
++#
++# This is need for earlier builds of msysgit that does not have it on by
++# default for csharp files.
++# Note: This is only used by command line
++###############################################################################
++#*.cs     diff=csharp
++
++###############################################################################
++# Set the merge driver for project and solution files
++#
++# Merging from the command prompt will add diff markers to the files if there
++# are conflicts (Merging from VS is not affected by the settings below, in VS
++# the diff markers are never inserted). Diff markers may cause the following 
++# file extensions to fail to load in VS. An alternative would be to treat
++# these files as binary and thus will always conflict and require user
++# intervention with every merge. To do so, just uncomment the entries below
++###############################################################################
++#*.sln       merge=binary
++#*.csproj    merge=binary
++#*.vbproj    merge=binary
++#*.vcxproj   merge=binary
++#*.vcproj    merge=binary
++#*.dbproj    merge=binary
++#*.fsproj    merge=binary
++#*.lsproj    merge=binary
++#*.wixproj   merge=binary
++#*.modelproj merge=binary
++#*.sqlproj   merge=binary
++#*.wwaproj   merge=binary
++
++###############################################################################
++# behavior for image files
++#
++# image files are treated as binary by default.
++###############################################################################
++#*.jpg   binary
++#*.png   binary
++#*.gif   binary
++
++###############################################################################
++# diff behavior for common document formats
++# 
++# Convert binary document formats to text before diffing them. This feature
++# is only available from the command line. Turn it on by uncommenting the 
++# entries below.
++###############################################################################
++#*.doc   diff=astextplain
++#*.DOC   diff=astextplain
++#*.docx  diff=astextplain
++#*.DOCX  diff=astextplain
++#*.dot   diff=astextplain
++#*.DOT   diff=astextplain
++#*.pdf   diff=astextplain
++#*.PDF   diff=astextplain
++#*.rtf   diff=astextplain
++#*.RTF   diff=astextplain
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..9491a2f
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,363 @@
++## Ignore Visual Studio temporary files, build results, and
++## files generated by popular Visual Studio add-ons.
++##
++## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
++
++# User-specific files
++*.rsuser
++*.suo
++*.user
++*.userosscache
++*.sln.docstates
++
++# User-specific files (MonoDevelop/Xamarin Studio)
++*.userprefs
++
++# Mono auto generated files
++mono_crash.*
++
++# Build results
++[Dd]ebug/
++[Dd]ebugPublic/
++[Rr]elease/
++[Rr]eleases/
++x64/
++x86/
++[Ww][Ii][Nn]32/
++[Aa][Rr][Mm]/
++[Aa][Rr][Mm]64/
++bld/
++[Bb]in/
++[Oo]bj/
++[Oo]ut/
++[Ll]og/
++[Ll]ogs/
++
++# Visual Studio 2015/2017 cache/options directory
++.vs/
++# Uncomment if you have tasks that create the project's static files in wwwroot
++#wwwroot/
++
++# Visual Studio 2017 auto generated files
++Generated\ Files/
++
++# MSTest test Results
++[Tt]est[Rr]esult*/
++[Bb]uild[Ll]og.*
++
++# NUnit
++*.VisualState.xml
++TestResult.xml
++nunit-*.xml
++
++# Build Results of an ATL Project
++[Dd]ebugPS/
++[Rr]eleasePS/
++dlldata.c
++
++# Benchmark Results
++BenchmarkDotNet.Artifacts/
++
++# .NET Core
++project.lock.json
++project.fragment.lock.json
++artifacts/
++
++# ASP.NET Scaffolding
++ScaffoldingReadMe.txt
++
++# StyleCop
++StyleCopReport.xml
++
++# Files built by Visual Studio
++*_i.c
++*_p.c
++*_h.h
++*.ilk
++*.meta
++*.obj
++*.iobj
++*.pch
++*.pdb
++*.ipdb
++*.pgc
++*.pgd
++*.rsp
++*.sbr
++*.tlb
++*.tli
++*.tlh
++*.tmp
++*.tmp_proj
++*_wpftmp.csproj
++*.log
++*.vspscc
++*.vssscc
++.builds
++*.pidb
++*.svclog
++*.scc
++
++# Chutzpah Test files
++_Chutzpah*
++
++# Visual C++ cache files
++ipch/
++*.aps
++*.ncb
++*.opendb
++*.opensdf
++*.sdf
++*.cachefile
++*.VC.db
++*.VC.VC.opendb
++
++# Visual Studio profiler
++*.psess
++*.vsp
++*.vspx
++*.sap
++
++# Visual Studio Trace Files
++*.e2e
++
++# TFS 2012 Local Workspace
++$tf/
++
++# Guidance Automation Toolkit
++*.gpState
++
++# ReSharper is a .NET coding add-in
++_ReSharper*/
++*.[Rr]e[Ss]harper
++*.DotSettings.user
++
++# TeamCity is a build add-in
++_TeamCity*
++
++# DotCover is a Code Coverage Tool
++*.dotCover
++
++# AxoCover is a Code Coverage Tool
++.axoCover/*
++!.axoCover/settings.json
++
++# Coverlet is a free, cross platform Code Coverage Tool
++coverage*.json
++coverage*.xml
++coverage*.info
++
++# Visual Studio code coverage results
++*.coverage
++*.coveragexml
++
++# NCrunch
++_NCrunch_*
++.*crunch*.local.xml
++nCrunchTemp_*
++
++# MightyMoose
++*.mm.*
++AutoTest.Net/
++
++# Web workbench (sass)
++.sass-cache/
++
++# Installshield output folder
++[Ee]xpress/
++
++# DocProject is a documentation generator add-in
++DocProject/buildhelp/
++DocProject/Help/*.HxT
++DocProject/Help/*.HxC
++DocProject/Help/*.hhc
++DocProject/Help/*.hhk
++DocProject/Help/*.hhp
++DocProject/Help/Html2
++DocProject/Help/html
++
++# Click-Once directory
++publish/
++
++# Publish Web Output
++*.[Pp]ublish.xml
++*.azurePubxml
++# Note: Comment the next line if you want to checkin your web deploy settings,
++# but database connection strings (with potential passwords) will be unencrypted
++*.pubxml
++*.publishproj
++
++# Microsoft Azure Web App publish settings. Comment the next line if you want to
++# checkin your Azure Web App publish settings, but sensitive information contained
++# in these scripts will be unencrypted
++PublishScripts/
++
++# NuGet Packages
++*.nupkg
++# NuGet Symbol Packages
++*.snupkg
++# The packages folder can be ignored because of Package Restore
++**/[Pp]ackages/*
++# except build/, which is used as an MSBuild target.
++!**/[Pp]ackages/build/
++# Uncomment if necessary however generally it will be regenerated when needed
++#!**/[Pp]ackages/repositories.config
++# NuGet v3's project.json files produces more ignorable files
++*.nuget.props
++*.nuget.targets
++
++# Microsoft Azure Build Output
++csx/
++*.build.csdef
++
++# Microsoft Azure Emulator
++ecf/
++rcf/
++
++# Windows Store app package directories and files
++AppPackages/
++BundleArtifacts/
++Package.StoreAssociation.xml
++_pkginfo.txt
++*.appx
++*.appxbundle
++*.appxupload
++
++# Visual Studio cache files
++# files ending in .cache can be ignored
++*.[Cc]ache
++# but keep track of directories ending in .cache
++!?*.[Cc]ache/
++
++# Others
++ClientBin/
++~$*
++*~
++*.dbmdl
++*.dbproj.schemaview
++*.jfm
++*.pfx
++*.publishsettings
++orleans.codegen.cs
++
++# Including strong name files can present a security risk
++# (https://github.com/github/gitignore/pull/2483#issue-259490424)
++#*.snk
++
++# Since there are multiple workflows, uncomment next line to ignore bower_components
++# (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
++#bower_components/
++
++# RIA/Silverlight projects
++Generated_Code/
++
++# Backup & report files from converting an old project file
++# to a newer Visual Studio version. Backup files are not needed,
++# because we have git ;-)
++_UpgradeReport_Files/
++Backup*/
++UpgradeLog*.XML
++UpgradeLog*.htm
++ServiceFabricBackup/
++*.rptproj.bak
++
++# SQL Server files
++*.mdf
++*.ldf
++*.ndf
++
++# Business Intelligence projects
++*.rdl.data
++*.bim.layout
++*.bim_*.settings
++*.rptproj.rsuser
++*- [Bb]ackup.rdl
++*- [Bb]ackup ([0-9]).rdl
++*- [Bb]ackup ([0-9][0-9]).rdl
++
++# Microsoft Fakes
++FakesAssemblies/
++
++# GhostDoc plugin setting file
++*.GhostDoc.xml
++
++# Node.js Tools for Visual Studio
++.ntvs_analysis.dat
++node_modules/
++
++# Visual Studio 6 build log
++*.plg
++
++# Visual Studio 6 workspace options file
++*.opt
++
++# Visual Studio 6 auto-generated workspace file (contains which files were open etc.)
++*.vbw
++
++# Visual Studio LightSwitch build output
++**/*.HTMLClient/GeneratedArtifacts
++**/*.DesktopClient/GeneratedArtifacts
++**/*.DesktopClient/ModelManifest.xml
++**/*.Server/GeneratedArtifacts
++**/*.Server/ModelManifest.xml
++_Pvt_Extensions
++
++# Paket dependency manager
++.paket/paket.exe
++paket-files/
++
++# FAKE - F# Make
++.fake/
++
++# CodeRush personal settings
++.cr/personal
++
++# Python Tools for Visual Studio (PTVS)
++__pycache__/
++*.pyc
++
++# Cake - Uncomment if you are using it
++# tools/**
++# !tools/packages.config
++
++# Tabs Studio
++*.tss
++
++# Telerik's JustMock configuration file
++*.jmconfig
++
++# BizTalk build output
++*.btp.cs
++*.btm.cs
++*.odx.cs
++*.xsd.cs
++
++# OpenCover UI analysis results
++OpenCover/
++
++# Azure Stream Analytics local run output
++ASALocalRun/
++
++# MSBuild Binary and Structured Log
++*.binlog
++
++# NVidia Nsight GPU debugger configuration file
++*.nvuser
++
++# MFractors (Xamarin productivity tool) working folder
++.mfractor/
++
++# Local History for Visual Studio
++.localhistory/
++
++# BeatPulse healthcheck temp database
++healthchecksdb
++
++# Backup folder for Package Reference Convert tool in Visual Studio 2017
++MigrationBackup/
++
++# Ionide (cross platform F# VS Code tools) working folder
++.ionide/
++
++# Fody - auto-generated XML schema
++FodyWeavers.xsd
+\ No newline at end of file
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..80da421
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++CPR101 Final Group Project
+\ No newline at end of file
