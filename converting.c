@@ -52,4 +52,25 @@ void converting(void) {
         }        
     } while (strcmp(doubleString, "q") != 0); //end of loop
     printf("*** End of Converting String to double Demo ***\n\n");
+
+//Version 3
+    printf("*** Start of Converting Strings to long Demo ***\n");
+    char  longString[BUFFER_SIZE]; //this variable is to store the input string from user
+    long  longNumber; //this variable is to store a long number converted from the String
+
+    //Start of do-while loop, exits when "q" is received
+    do
+    {
+        printf("Type the long numeric string (q - to quit):\n");
+        fgets(longString, BUFFER_SIZE, stdin);
+        longString[strlen(longString) - 1] = '\0'; //define the null terminator at the end of the string
+        if ((strcmp(longString, "q") != 0)) //compare the input with the exiting string "q"
+        {
+            longNumber = atol(longString); //convert the numeric string to long type
+            printf("Converted number is %ld\n", longNumber); //Display the result after conversion
+        }
+    } while (strcmp(longString, "q") != 0); //end of loop
+    printf("*** End of Converting String to double Demo ***\n\n");
 }
+
+
