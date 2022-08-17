@@ -12,7 +12,9 @@ input, and by calling strcmp() function from C string library, the program will
 determine if these two strings are equal: if the strings are equal, the function
 returns 0. If the first non-matching character in compare1 is greater (in ASCII)
 than that of compare2, return > 0. If the first non-matching character in
-compare1 is lower (in ASCII) than that of compare2 return < 0.
+compare1 is lower (in ASCII) than that of compare2 return < 0. The manipulations
+module V3 receives two strings from user input, and finds the first occurrence
+of the substring needle in the string haystack.
 */
 
 #ifndef _MANIPULATING_H_

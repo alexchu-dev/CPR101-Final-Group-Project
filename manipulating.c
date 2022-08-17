@@ -12,7 +12,9 @@ input, and by calling strcmp() function from C string library, the program will
 determine if these two strings are equal: if the strings are equal, the function
 returns 0. If the first non-matching character in compare1 is greater (in ASCII)
 than that of compare2, return > 0. If the first non-matching character in
-compare1 is lower (in ASCII) than that of compare2 return < 0.
+compare1 is lower (in ASCII) than that of compare2 return < 0. The manipulations
+module V3 receives two strings from user input, and finds the first occurrence
+of the substring needle in the string haystack.
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -50,6 +52,7 @@ void manipulating(void) {
   printf("*** End of Concatenating Demo ***\n\n");
 
   // V2
+  // compare two strings from user input
   printf("*** Start of Comparing Strings Demo ***\n");
   char compare1[BUFFER_SIZE];  // initialize compare1 to store first user input
                                // string
@@ -86,4 +89,43 @@ void manipulating(void) {
   } while (strcmp(compare1, "q") !=
            0);  // infinite loop end when character 'q' is input by user
   printf("*** End of Comparing Strings Demo ***\n\n");
+
+  // V3
+  // search the first occurrence of sub-string needle in the string haystack
+  // from user input
+  printf("*** Start of Searching Strings Demo ***\n");
+  char haystack[BUFFER_SIZE];  // initialize haystack to store first user input
+                               // string
+  char needle[BUFFER_SIZE];    // initialize needle to store first user input
+                               // string
+  char* occurrence = NULL;     // initialize a pointer named occurrence
+  do {                         // infinite loop start
+    printf("Type the string (q - to quit):\n");
+    fgets(haystack, BUFFER_SIZE,
+          stdin);  // receive the whole line input for haystack
+    haystack[strlen(haystack) - 1] = '\0';  // add null terminator symbol to
+                                            // the last index of haystack
+    if (strcmp(haystack, "q") != 0) {  // check if user does not input "q", if
+                                       // user enter "q", exit the while loop
+      printf("Type the substring:\n");
+      fgets(needle, BUFFER_SIZE,
+            stdin);  // receive the whole line input for needle
+      needle[strlen(needle) - 1] = '\0';  // add null terminator symbol to
+                                          // the last index of needle
+      occurrence =
+          strstr(haystack, needle);  // search the first occurrence of the
+                                     // sub-string needle in string haystack,
+                                     // and assign the result to occurrence
+      if (occurrence)
+        printf("\'%s\' found at %d position\n", needle,
+               (int)(occurrence -
+                     haystack));  // check if occurrence exist, if occurrence
+                                  // exist, printf the position
+      else
+        printf("Not found\n");  // else, the occurrence is non-exist, print Not
+                                // found
+    }
+  } while (strcmp(haystack, "q") !=
+           0);  // infinite loop end when character 'q' is input by user
+  printf("*** End of Searching Strings Demo ***\n\n");
 }
